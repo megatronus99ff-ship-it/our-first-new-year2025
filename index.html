@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year, Love!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    /* Background & font */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      font-family: 'Pacifico', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 3em;
+      text-shadow: 2px 2px #ff6f91;
+      text-align: center;
+      margin: 0.5em;
+    }
+
+    p {
+      color: #fff;
+      font-size: 1.5em;
+      margin: 0.5em;
+      text-align: center;
+    }
+
+    /* Music button */
+    #musicBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ff6f91;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #musicBtn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      opacity: 0.8;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Happy New Year! 🎉</h1>
+  <p>To my amazing girlfriend ❤️</p>
+
+  <button id="musicBtn">Play Music</button>
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        bgMusic.play();
+        musicBtn.textContent = "Pause Music";
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = "Play Music";
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // Generate confetti
+    for (let i = 0; i < 50; i++) {
+      let confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * window.innerWidth + 'px';
+      confetti.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 80%)`;
+      confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
+      confetti.style.width = confetti.style.height = (5 + Math.random() * 10) + 'px';
+      document.body.appendChild(confetti);
+    }
+  </script>
+
+</body>
+</html>
