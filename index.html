@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy New Year, Love!</title>
+  <title>Happy New Year!</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
-    /* Background & font */
     body {
       margin: 0;
       padding: 0;
@@ -35,7 +34,6 @@
       text-align: center;
     }
 
-    /* Music button */
     #musicBtn {
       margin-top: 20px;
       padding: 10px 20px;
@@ -66,11 +64,35 @@
       0% { transform: translateY(-10px) rotate(0deg); }
       100% { transform: translateY(100vh) rotate(360deg); }
     }
+
+    /* Photo gallery */
+    #gallery {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #gallery img {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 3px solid white;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    #gallery img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px white;
+    }
   </style>
 </head>
 <body>
 
-  <h1>🎉 Happy New Year! 🎉</h1>
+  <h1>🎉 Happy New Year, <span id="herName">HerName</span>! 🎉</h1>
   <p>To my amazing girlfriend ❤️</p>
 
   <button id="musicBtn">Play Music</button>
@@ -78,7 +100,18 @@
     <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
   </audio>
 
+  <div id="gallery">
+    <!-- Add her photos here -->
+    <img src="photo1.jpg" alt="Cute photo 1">
+    <img src="photo2.jpg" alt="Cute photo 2">
+    <img src="photo3.jpg" alt="Cute photo 3">
+  </div>
+
   <script>
+    // Change her name here
+    document.getElementById('herName').textContent = "Tushti";
+
+    // Music button
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
     let isPlaying = false;
